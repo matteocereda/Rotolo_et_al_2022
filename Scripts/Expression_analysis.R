@@ -168,6 +168,10 @@ dev.off()
 
 sig=subset(as.data.frame(res),padj<=0.05 & abs(log2FoldChange)>1 )
 
+library(DESeq2)
+
+vsd <- vst(deg, blind=FALSE)
+
 nor=as.data.frame(assay(vsd))
 nor$gene_name=c$gene_name[match(rownames(nor), rownames(c))]
 nor$gene_id=c$Geneid[match(rownames(nor), rownames(c))]
